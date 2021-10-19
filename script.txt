@@ -1,0 +1,30 @@
+!/bin/bash
+CLIENTS=()
+for client in "{CLIENTS[@]}"
+do
+echo "Checking whether client folder exists or not"
+if [ -d $client* ]; then
+echo "Directories "
+ll $client* | aws '{print $9}'
+
+
+for files=$(ls *.*gz)
+do
+gzip -dv "$files" , "$client"
+gzip -dv WEB01_ns-access_log-*.gz
+gzip -dv WEB02_ns-access_log-*.gz
+/usr/local/awstats/tools/logresolvmerge.pl client.txt
+/usr/local/awstats/wwwroot/cgi-bin/awstats.pl --cinfig=client.com
+cd /etc/awstats/
+cp awstats.model.conf awstats.cilent.com.conf
+done
+
+
+clients=( apers bridge chilab iam iupdat lfg loc mcers moo mfl scers ufcw vcera )
+for client in “${client[@]}”
+do
+echo "$client"
+done
+
+/root/weblogs
+
