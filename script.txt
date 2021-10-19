@@ -2,10 +2,12 @@
 CLIENTS=()
 for client in "{CLIENTS[@]}"
 do
-echo "Checking whether client folder exists or not"
-if [ -d $client* ]; then
-echo "Directories "
-ll $client* | aws '{print $9}'
+ echo "Checking whether client folder exists or not"
+ if [ -d $client* ]; then
+    echo "Directories "
+    ls -l | grep '^d' | awk '{print $9}' | grep '^$client'
+ fi
+done
 
 
 for files=$(ls *.*gz)
