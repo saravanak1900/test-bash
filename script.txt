@@ -22,7 +22,6 @@ cp awstats.model.conf awstats.cilent.com.conf
 done
 
 
-clients=( apers bridge chilab iam iupdat lfg loc mcers moo mfl scers ufcw vcera )
 for client in “${client[@]}”
 do
 echo "$client"
